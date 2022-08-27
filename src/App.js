@@ -5,14 +5,12 @@ import moment from "moment";
 import Footer from "./footer";
 
 const App = () => {
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
   const [apiData, setApiData] = useState({});
 
-  async function fetchData(lat, lng) {
+  async function fetchData(lat, lon) {
     await fetch(
-      `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => setApiData(data));
@@ -26,8 +24,6 @@ const App = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setStatus(null);
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
           fetchData(position.coords.latitude, position.coords.longitude);
         },
         () => {
@@ -50,9 +46,21 @@ const App = () => {
         Get Current Weather for Your Geo-Targeting
       </button>
       <p>{status}</p>
-      {lat && (
+      {apiData?.coord?.lat && (
         <Table bordered striped hover variant="dark" size="sm">
           <tbody>
+            <tr>
+              <th scope="col" className="align-middle">
+                Average Weather
+              </th>
+              <td>
+                <img
+                  src={`//openweathermap.org/img/w/${apiData?.weather?.[0].icon}.png`}
+                  alt="Average Weather"
+                  title="Average Weather"
+                />
+              </td>
+            </tr>
             <tr>
               <th scope="col">Area</th>
               <td>{apiData?.name}</td>
@@ -65,7 +73,7 @@ const App = () => {
               <th scope="col">
                 Geographical coordinates (latitude, longitude)
               </th>
-              <td>{[lat, "  ", lng]}</td>
+              <td>{[apiData?.coord?.lat, ",  ", apiData?.coord?.lon]}</td>
             </tr>
             <tr>
               <th scope="col">Description</th>
@@ -73,19 +81,19 @@ const App = () => {
             </tr>
             <tr>
               <th scope="col">Temperature</th>
-              <td>{apiData?.main?.temp} °C</td>
+              <td>{apiData?.main?.temp} &deg;C</td>
             </tr>
             <tr>
               <th scope="col">Temperature (the human perception of weather)</th>
-              <td>{apiData?.main?.feels_like} °C</td>
+              <td>{apiData?.main?.feels_like} &deg;C</td>
             </tr>
             <tr>
               <th scope="col">Maximum Temperature</th>
-              <td>{apiData?.main?.temp_max} °C</td>
+              <td>{apiData?.main?.temp_max} &deg;C</td>
             </tr>
             <tr>
               <th scope="col">Minimal Temperature</th>
-              <td>{apiData?.main?.temp_min} °C</td>
+              <td>{apiData?.main?.temp_min} &deg;C</td>
             </tr>
             <tr>
               <th scope="col">Pressure</th>
