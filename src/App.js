@@ -48,6 +48,7 @@ const App = () => {
       <p>{status}</p>
       {apiData?.coord?.lat && (
         <Table bordered striped hover variant="dark" size="sm">
+        <caption>{moment.unix(apiData?.dt).format('MMMM Do YYYY, h:mm:ss a')}</caption>
           <tbody>
             <tr>
               <th scope="col" className="align-middle">
@@ -56,8 +57,8 @@ const App = () => {
               <td>
                 <img
                   src={`//openweathermap.org/img/w/${apiData?.weather?.[0].icon}.png`}
-                  alt="Average Weather"
-                  title="Average Weather"
+                  alt={apiData?.weather?.[0].main}
+                  title={apiData?.weather?.[0].main}
                 />
               </td>
             </tr>
@@ -88,12 +89,8 @@ const App = () => {
               <td>{apiData?.main?.feels_like} &deg;C</td>
             </tr>
             <tr>
-              <th scope="col">Maximum Temperature</th>
-              <td>{apiData?.main?.temp_max} &deg;C</td>
-            </tr>
-            <tr>
-              <th scope="col">Minimal Temperature</th>
-              <td>{apiData?.main?.temp_min} &deg;C</td>
+              <th scope="col">Min, Max Temperature</th>
+              <td>{apiData?.main?.temp_min}, {apiData?.main?.temp_max} &deg;C</td>
             </tr>
             <tr>
               <th scope="col">Pressure</th>
