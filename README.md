@@ -13,3 +13,5 @@ $ touch .env && echo -e "REACT_APP_WEATHER_API_KEY = xxxxxxxxxxxxxxxxxxxxx\nHTTP
 $ npm install
 $ npm start
 ```
+
+NB. The first version of the app (picture-background) is available [here](https://github.com/cmirnow/OpenWeatherMap-React-App/tree/f70df2d2ecaeede6fd9278d74ff8aa1c6312d0bb). Next is the version with vanta.js.

@@ -46,15 +46,15 @@ const App = () => {
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
-          //minHeight: 900.00,
-          //minWidth: 800.00,
+          minHeight: 200.00,
+          minWidth: 200.00,
           highlightColor: 0xb6a574,
           midtoneColor: 0xf5b3a9,
           lowlightColor: 0xa1016,
           baseColor: 0x537dcd,
-          blurFactor: 0.6,
-          speed: 5.0,
-          zoom: 1.5,
+          blurFactor: 0.60,
+          speed: 5.00,
+          zoom: 1.50
         })
       );
     }
