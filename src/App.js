@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import FOG from "vanta/dist/vanta.fog.min";
-import * as THREE from "three";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "react-bootstrap/Table";
 import moment from "moment";
 import Footer from "./footer";
+import FogComponent from "./components/FogComponent";
 
-const App = () => {
+function App() {
   const [status, setStatus] = useState(null);
   const [apiData, setApiData] = useState({});
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const vantaRef = useRef(null);
 
   async function fetchData(lat, lon) {
     await fetch(
@@ -37,33 +34,8 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        FOG({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          highlightColor: 0xb6a574,
-          midtoneColor: 0xf5b3a9,
-          lowlightColor: 0xa1016,
-          baseColor: 0x537dcd,
-          blurFactor: 0.60,
-          speed: 5.00,
-          zoom: 1.50
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
   return (
-    <div style={{ height: "100vh", width: "100%" }} ref={vantaRef}>
+    <FogComponent>
       <div className="App">
         <button
           onClick={getLocation}
@@ -157,7 +129,7 @@ const App = () => {
         )}
         <Footer />
       </div>
-    </div>
+    </FogComponent>
   );
 };
 
