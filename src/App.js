@@ -46,13 +46,13 @@ function App() {
         </button>
         <p>{status}</p>
         {apiData?.coord?.lat && (
-          <Table bordered striped hover variant="dark" size="sm">
+          <Table className="align-middle" bordered striped hover variant="dark" size="sm">
             <caption className="badge bg-secondary text-wrap">
               {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
             </caption>
             <tbody>
               <tr>
-                <th scope="col" className="align-middle">
+                <th scope="col">
                   Average Weather
                 </th>
                 <td>
@@ -94,7 +94,7 @@ function App() {
               <tr>
                 <th scope="col">Min, Max Temperature</th>
                 <td>
-                  {apiData?.main?.temp_min}, {apiData?.main?.temp_max} &deg;C
+                  {apiData?.main?.temp_min} &deg;C, {apiData?.main?.temp_max} &deg;C
                 </td>
               </tr>
               <tr>
