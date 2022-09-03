@@ -20,7 +20,7 @@ function App() {
 
   async function fetchData1(lat, lon) {
     await fetch(
-      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=9&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=8&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => setApiDataForecast(data));
@@ -47,7 +47,18 @@ function App() {
   return (
     <FogComponent>
       <div className="App">
-      <ScrollToTop smooth color="#6666cc" />
+        <ScrollToTop smooth color="#6666cc" />
+        <span className="fixed-bottom badge bg-secondary link-action">
+          <a
+            alt="Masterpro Project"
+            title="Masterpro Project"
+            href="https://masterpro.ws/api-openweathermap-w3c-geolocation-api-reactjs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Masterpro Project
+          </a>
+        </span>
         <button
           onClick={getLocation}
           type="button"
@@ -67,11 +78,11 @@ function App() {
             size="sm"
           >
             <caption className="badge bg-secondary text-wrap">
-              {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
+              Calling OpenWeather APIs: {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
             </caption>
             <tbody>
               <tr>
-                <th scope="col">Average Weather</th>
+                <th scope="col">Weather Conditions</th>
                 <td>
                   <img
                     src={`//openweathermap.org/img/w/${apiData?.weather?.[0].icon}.png`}
@@ -158,14 +169,14 @@ function App() {
             <thead className="align-middle">
               <tr>
                 <th>Date</th>
-                <th>Day Temperature</th>
-                <th>Night Temperature</th>
-                <th>Pressure</th>
-                <th>Humidity</th>
-                <th>Wind</th>
-                <th>Probability of precipitation</th>
+                <th>Day Temperature (&deg;C)</th>
+                <th>Night Temperature &deg;C</th>
+                <th>Pressure (hPa)</th>
+                <th>Humidity (%)</th>
+                <th>Wind (meter/sec)</th>
+                <th>Probability of precipitation (%)</th>
                 <th>Description</th>
-                <th>Icon</th>
+                <th>Weather conditions</th>
               </tr>
             </thead>
             <tbody>
@@ -175,12 +186,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[1].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[1].temp?.day} </td>
-                <td>{apiDataForecast?.list?.[1].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[1].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[1].humidity} %</td>
-                <td>{apiDataForecast?.list?.[1].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[1].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[1].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[1].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[1].pressure}</td>
+                <td>{apiDataForecast?.list?.[1].humidity}</td>
+                <td>{apiDataForecast?.list?.[1].speed}</td>
+                <td>{apiDataForecast?.list?.[1].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[1].weather?.[0].description}</td>
                 <td>
                   <img
@@ -197,12 +208,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[2].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[2].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[2].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[2].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[2].humidity} %</td>
-                <td>{apiDataForecast?.list?.[2].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[2].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[2].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[2].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[2].pressure}</td>
+                <td>{apiDataForecast?.list?.[2].humidity}</td>
+                <td>{apiDataForecast?.list?.[2].speed}</td>
+                <td>{apiDataForecast?.list?.[2].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[2].weather?.[0].description}</td>
                 <td>
                   <img
@@ -219,12 +230,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[3].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[3].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[3].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[3].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[3].humidity} %</td>
-                <td>{apiDataForecast?.list?.[3].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[3].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[3].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[3].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[3].pressure}</td>
+                <td>{apiDataForecast?.list?.[3].humidity}</td>
+                <td>{apiDataForecast?.list?.[3].speed}</td>
+                <td>{apiDataForecast?.list?.[3].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[3].weather?.[0].description}</td>
                 <td>
                   <img
@@ -241,12 +252,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[4].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[4].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[4].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[4].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[4].humidity} %</td>
-                <td>{apiDataForecast?.list?.[4].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[4].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[4].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[4].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[4].pressure}</td>
+                <td>{apiDataForecast?.list?.[4].humidity}</td>
+                <td>{apiDataForecast?.list?.[4].speed}</td>
+                <td>{apiDataForecast?.list?.[4].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[4].weather?.[0].description}</td>
                 <td>
                   <img
@@ -263,12 +274,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[5].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[5].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[5].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[5].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[5].humidity} %</td>
-                <td>{apiDataForecast?.list?.[5].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[5].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[5].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[5].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[5].pressure}</td>
+                <td>{apiDataForecast?.list?.[5].humidity}</td>
+                <td>{apiDataForecast?.list?.[5].speed}</td>
+                <td>{apiDataForecast?.list?.[5].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[5].weather?.[0].description}</td>
                 <td>
                   <img
@@ -285,12 +296,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[6].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[6].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[6].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[6].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[6].humidity} %</td>
-                <td>{apiDataForecast?.list?.[6].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[6].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[6].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[6].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[6].pressure}</td>
+                <td>{apiDataForecast?.list?.[6].humidity}</td>
+                <td>{apiDataForecast?.list?.[6].speed}</td>
+                <td>{apiDataForecast?.list?.[6].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[6].weather?.[0].description}</td>
                 <td>
                   <img
@@ -307,12 +318,12 @@ function App() {
                     .unix(apiDataForecast?.list?.[7].dt)
                     .format("MMMM Do YYYY")}
                 </td>
-                <td>{apiDataForecast?.list?.[7].temp?.day} &deg;C</td>
-                <td>{apiDataForecast?.list?.[7].temp?.night} &deg;C</td>
-                <td>{apiDataForecast?.list?.[7].pressure} hPa</td>
-                <td>{apiDataForecast?.list?.[7].humidity} %</td>
-                <td>{apiDataForecast?.list?.[7].speed} meter/sec</td>
-                <td>{apiDataForecast?.list?.[7].pop * 100} %</td>
+                <td>{apiDataForecast?.list?.[7].temp?.day}</td>
+                <td>{apiDataForecast?.list?.[7].temp?.night}</td>
+                <td>{apiDataForecast?.list?.[7].pressure}</td>
+                <td>{apiDataForecast?.list?.[7].humidity}</td>
+                <td>{apiDataForecast?.list?.[7].speed}</td>
+                <td>{apiDataForecast?.list?.[7].pop * 100}</td>
                 <td>{apiDataForecast?.list?.[7].weather?.[0].description}</td>
                 <td>
                   <img

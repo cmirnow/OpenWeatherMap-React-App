@@ -8,7 +8,12 @@ body {
   overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.link-action {
+    font-style: italic;
+    font-size: small;
 }
