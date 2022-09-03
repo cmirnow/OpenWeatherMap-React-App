@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "react-bootstrap/Table";
 import moment from "moment";
 import FogComponent from "./components/FogComponent";
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
   const [status, setStatus] = useState(null);
@@ -46,6 +47,7 @@ function App() {
   return (
     <FogComponent>
       <div className="App">
+      <ScrollToTop smooth color="#6666cc" />
         <button
           onClick={getLocation}
           type="button"

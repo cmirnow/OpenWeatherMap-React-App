@@ -5,30 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.footer{
-  margin-top: 1rem;
-  padding: 0.5rem;
-  background-color: #ccc;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-a {
-    color: black !important;
-    text-decoration: none !important;
-}
-
-.link-action {
-    font-style: italic;
-    font-size: small;
-    float: right;
 }
