@@ -30,7 +30,6 @@ class FogComponent extends Component {
     if (this.vantaEffect) this.vantaEffect.destroy();
   }
   render() {
-    const { children } = this.props;
     return (
       <div style={{ height: "100vh", width: "100%" }} ref={this.vantaRef}>
         {this.props.children}

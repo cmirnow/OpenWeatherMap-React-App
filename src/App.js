@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "react-bootstrap/Table";
-import moment from "moment";
 import FogComponent from "./components/FogComponent";
+import moment from "moment";
 import ScrollToTop from "react-scroll-to-top";
+import urid from "urid";
 
 function App() {
   const [status, setStatus] = useState(null);
@@ -20,7 +22,7 @@ function App() {
 
   async function fetchData1(lat, lon) {
     await fetch(
-      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=8&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => setApiDataForecast(data));
@@ -78,11 +80,12 @@ function App() {
             size="sm"
           >
             <caption className="badge bg-secondary text-wrap">
-              Calling OpenWeather APIs: {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
+              Calling OpenWeather APIs:{" "}
+              {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
             </caption>
             <tbody>
               <tr>
-                <th scope="col">Weather Conditions</th>
+                <th scope="col"> Current Weather Conditions</th>
                 <td>
                   <img
                     src={`//openweathermap.org/img/w/${apiData?.weather?.[0].icon}.png`}
@@ -156,186 +159,57 @@ function App() {
             </tbody>
           </Table>
         )}
-        {apiData?.coord?.lat && (
-          <Table
-            className="align-middle text-center"
-            bordered
-            striped
-            hover
-            responsive
-            variant="dark"
-            size="sm"
-          >
-            <thead className="align-middle">
-              <tr>
-                <th>Date</th>
-                <th>Day Temperature (&deg;C)</th>
-                <th>Night Temperature &deg;C</th>
-                <th>Pressure (hPa)</th>
-                <th>Humidity (%)</th>
-                <th>Wind (meter/sec)</th>
-                <th>Probability of precipitation (%)</th>
-                <th>Description</th>
-                <th>Weather conditions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[1].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[1].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[1].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[1].pressure}</td>
-                <td>{apiDataForecast?.list?.[1].humidity}</td>
-                <td>{apiDataForecast?.list?.[1].speed}</td>
-                <td>{apiDataForecast?.list?.[1].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[1].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[1].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[1].weather?.[0].main}
-                    title={apiDataForecast?.list?.[1].weather?.[0].main}
-                  />
-                </td>
-              </tr>
 
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[2].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[2].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[2].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[2].pressure}</td>
-                <td>{apiDataForecast?.list?.[2].humidity}</td>
-                <td>{apiDataForecast?.list?.[2].speed}</td>
-                <td>{apiDataForecast?.list?.[2].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[2].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[2].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[2].weather?.[0].main}
-                    title={apiDataForecast?.list?.[2].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[3].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[3].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[3].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[3].pressure}</td>
-                <td>{apiDataForecast?.list?.[3].humidity}</td>
-                <td>{apiDataForecast?.list?.[3].speed}</td>
-                <td>{apiDataForecast?.list?.[3].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[3].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[3].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[3].weather?.[0].main}
-                    title={apiDataForecast?.list?.[3].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[4].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[4].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[4].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[4].pressure}</td>
-                <td>{apiDataForecast?.list?.[4].humidity}</td>
-                <td>{apiDataForecast?.list?.[4].speed}</td>
-                <td>{apiDataForecast?.list?.[4].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[4].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[4].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[4].weather?.[0].main}
-                    title={apiDataForecast?.list?.[4].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[5].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[5].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[5].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[5].pressure}</td>
-                <td>{apiDataForecast?.list?.[5].humidity}</td>
-                <td>{apiDataForecast?.list?.[5].speed}</td>
-                <td>{apiDataForecast?.list?.[5].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[5].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[5].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[5].weather?.[0].main}
-                    title={apiDataForecast?.list?.[5].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[6].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[6].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[6].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[6].pressure}</td>
-                <td>{apiDataForecast?.list?.[6].humidity}</td>
-                <td>{apiDataForecast?.list?.[6].speed}</td>
-                <td>{apiDataForecast?.list?.[6].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[6].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[6].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[6].weather?.[0].main}
-                    title={apiDataForecast?.list?.[6].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  {moment
-                    .unix(apiDataForecast?.list?.[7].dt)
-                    .format("MMMM Do YYYY")}
-                </td>
-                <td>{apiDataForecast?.list?.[7].temp?.day}</td>
-                <td>{apiDataForecast?.list?.[7].temp?.night}</td>
-                <td>{apiDataForecast?.list?.[7].pressure}</td>
-                <td>{apiDataForecast?.list?.[7].humidity}</td>
-                <td>{apiDataForecast?.list?.[7].speed}</td>
-                <td>{apiDataForecast?.list?.[7].pop * 100}</td>
-                <td>{apiDataForecast?.list?.[7].weather?.[0].description}</td>
-                <td>
-                  <img
-                    src={`//openweathermap.org/img/w/${apiDataForecast?.list?.[7].weather?.[0].icon}.png`}
-                    alt={apiDataForecast?.list?.[7].weather?.[0].main}
-                    title={apiDataForecast?.list?.[7].weather?.[0].main}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-        )}
+        {apiData?.coord?.lat &&
+          [apiDataForecast].map((dataIn) => {
+            return (
+              <Table
+                key={urid()}
+                className="align-middle text-center"
+                bordered
+                striped
+                hover
+                responsive
+                variant="dark"
+                size="sm"
+              >
+                <thead className="align-middle" key={urid()}>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Day Temperature (&deg;C)</th>
+                    <th scope="col">Night Temperature &deg;C</th>
+                    <th scope="col">Pressure (hPa)</th>
+                    <th scope="col">Humidity (%)</th>
+                    <th scope="col">Wind (meter/sec)</th>
+                    <th scope="col">Probability of precipitation</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Weather conditions</th>
+                  </tr>
+                </thead>
+                <tbody key={urid()}>
+                  {dataIn?.list?.map((list) => (
+                    <tr key={urid()}>
+                      <td>{moment.unix(list?.dt).format("MMMM Do YYYY")}</td>
+                      <td>{list?.temp?.day}</td>
+                      <td>{list?.temp?.night}</td>
+                      <td>{list?.pressure}</td>
+                      <td>{list?.humidity}</td>
+                      <td>{list?.speed}</td>
+                      <td>{list?.pop}</td>
+                      <td>{list?.weather?.[0].description}</td>
+                      <td>
+                        <img
+                          src={`//openweathermap.org/img/w/${list?.weather?.[0].icon}.png`}
+                          alt={list?.weather?.[0].main}
+                          title={list?.weather?.[0].main}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            );
+          })}
       </div>
     </FogComponent>
   );

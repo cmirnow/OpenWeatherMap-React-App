@@ -1,0 +1,13 @@
+a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.link-action {
+    font-style: italic;
+    font-size: small;
+}
+
+.scroll-to-top {
+	opacity: 0.5;
+}

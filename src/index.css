@@ -7,13 +7,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-
-a {
-    color: white !important;
-    text-decoration: none !important;
-}
-
-.link-action {
-    font-style: italic;
-    font-size: small;
-}
