@@ -69,7 +69,7 @@ function App() {
           Get Current Weather for Your Geo-Targeting
         </button>
         <p>{status}</p>
-        {apiData?.coord?.lat && (
+        {apiData.coord?.lat && 
           <Table
             className="align-middle"
             bordered
@@ -81,7 +81,7 @@ function App() {
           >
             <caption className="badge bg-secondary text-wrap">
               Calling OpenWeather APIs:{" "}
-              {moment.unix(apiData?.dt).format("MMMM Do YYYY, h:mm:ss a")}
+              {moment.unix(apiData.dt).format("MMMM Do YYYY, h:mm:ss a")}
             </caption>
             <tbody>
               <tr>
@@ -89,78 +89,78 @@ function App() {
                 <td>
                   <img
                     src={`//openweathermap.org/img/w/${apiData?.weather?.[0].icon}.png`}
-                    alt={apiData?.weather?.[0].main}
-                    title={apiData?.weather?.[0].main}
+                    alt={apiData.weather?.[0].main}
+                    title={apiData.weather?.[0].main}
                   />
                 </td>
               </tr>
               <tr>
                 <th scope="col">Area</th>
-                <td>{apiData?.name}</td>
+                <td>{apiData.name}</td>
               </tr>
               <tr>
                 <th scope="col">Country</th>
-                <td>{apiData?.sys?.country}</td>
+                <td>{apiData.sys?.country}</td>
               </tr>
               <tr>
                 <th scope="col">
                   Geographical coordinates (latitude, longitude)
                 </th>
-                <td>{[apiData?.coord?.lat, ",  ", apiData?.coord?.lon]}</td>
+                <td>{[apiData.coord?.lat, ",  ", apiData.coord?.lon]}</td>
               </tr>
               <tr>
                 <th scope="col">Description</th>
-                <td>{apiData?.weather?.[0].description}</td>
+                <td>{apiData.weather?.[0].description}</td>
               </tr>
               <tr>
                 <th scope="col">Temperature</th>
-                <td>{apiData?.main?.temp} &deg;C</td>
+                <td>{apiData.main?.temp} &deg;C</td>
               </tr>
               <tr>
                 <th scope="col">
                   Temperature (the human perception of weather)
                 </th>
-                <td>{apiData?.main?.feels_like} &deg;C</td>
+                <td>{apiData.main?.feels_like} &deg;C</td>
               </tr>
               <tr>
                 <th scope="col">Min, Max Temperature</th>
                 <td>
-                  {apiData?.main?.temp_min} &deg;C, {apiData?.main?.temp_max}{" "}
+                  {apiData.main?.temp_min} &deg;C, {apiData.main?.temp_max}{" "}
                   &deg;C
                 </td>
               </tr>
               <tr>
                 <th scope="col">Pressure</th>
-                <td>{apiData?.main?.pressure} hPa</td>
+                <td>{apiData.main?.pressure} hPa</td>
               </tr>
               <tr>
                 <th scope="col">Humidity</th>
-                <td>{apiData?.main?.humidity} %</td>
+                <td>{apiData.main?.humidity} %</td>
               </tr>
               <tr>
                 <th scope="col">Visibility</th>
-                <td>{apiData?.visibility} meters</td>
+                <td>{apiData.visibility} meters</td>
               </tr>
               <tr>
                 <th scope="col">Wind</th>
-                <td>{apiData?.wind?.speed} meter/sec</td>
+                <td>{apiData.wind?.speed} meter/sec</td>
               </tr>
               <tr>
                 <th scope="col">Clouds</th>
-                <td>{apiData?.clouds?.all} %</td>
+                <td>{apiData.clouds?.all} %</td>
               </tr>
               <tr>
                 <th scope="col">Sunrise, Sunset</th>
                 <td>
-                  {moment.unix(apiData?.sys?.sunrise).format("hh:mm a")},{" "}
-                  {moment.unix(apiData?.sys?.sunset).format("hh:mm a")}
+                  {moment.unix(apiData.sys?.sunrise).format("hh:mm a")},{" "}
+                  {moment.unix(apiData.sys?.sunset).format("hh:mm a")}
                 </td>
               </tr>
             </tbody>
           </Table>
-        )}
+         }
 
-        {apiData?.coord?.lat &&
+        {apiData.coord?.lat &&
           [apiDataForecast].map((dataIn) => {
             return (
               <Table
@@ -187,21 +187,21 @@ function App() {
                   </tr>
                 </thead>
                 <tbody key={urid()}>
-                  {dataIn?.list?.map((list) => (
+                  {dataIn.list?.map((list) => (
                     <tr key={urid()}>
-                      <td>{moment.unix(list?.dt).format("MMMM Do YYYY")}</td>
-                      <td>{list?.temp?.day}</td>
-                      <td>{list?.temp?.night}</td>
-                      <td>{list?.pressure}</td>
-                      <td>{list?.humidity}</td>
-                      <td>{list?.speed}</td>
-                      <td>{list?.pop}</td>
-                      <td>{list?.weather?.[0].description}</td>
+                      <td>{moment.unix(list.dt).format("MMMM Do YYYY")}</td>
+                      <td>{list.temp.day}</td>
+                      <td>{list.temp.night}</td>
+                      <td>{list.pressure}</td>
+                      <td>{list.humidity}</td>
+                      <td>{list.speed}</td>
+                      <td>{list.pop}</td>
+                      <td>{list.weather[0].description}</td>
                       <td>
                         <img
-                          src={`//openweathermap.org/img/w/${list?.weather?.[0].icon}.png`}
-                          alt={list?.weather?.[0].main}
-                          title={list?.weather?.[0].main}
+                          src={`//openweathermap.org/img/w/${list.weather[0].icon}.png`}
+                          alt={list.weather[0].main}
+                          title={list.weather[0].main}
                         />
                       </td>
                     </tr>
