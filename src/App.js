@@ -51,6 +51,7 @@ function App() {
       <div className="App">
         <ScrollToTop smooth color="#6666cc" />
         <span className="fixed-bottom badge bg-secondary link-action">
+        Copyright &copy; 2022{" "}
           <a
             alt="Masterpro Project"
             title="Masterpro Project"
