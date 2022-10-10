@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/openWeathermap-react-app/static/css/main.acd3640a.css",
+    "main.js": "/openWeathermap-react-app/static/js/main.e08749ac.js",
+    "static/js/787.b30f2593.chunk.js": "/openWeathermap-react-app/static/js/787.b30f2593.chunk.js",
+    "index.html": "/openWeathermap-react-app/index.html",
+    "main.acd3640a.css.map": "/openWeathermap-react-app/static/css/main.acd3640a.css.map",
+    "main.e08749ac.js.map": "/openWeathermap-react-app/static/js/main.e08749ac.js.map",
+    "787.b30f2593.chunk.js.map": "/openWeathermap-react-app/static/js/787.b30f2593.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.acd3640a.css",
+    "static/js/main.e08749ac.js"
+  ]
+}
