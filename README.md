@@ -2,7 +2,7 @@
 
 Simple application to display the current weather OpenWeatherMap. The browser needs permission to define Geo-Targeting.
 
-[Demo](https://openweathermap-react-app.herokuapp.com). [Description (in Russian)](https://masterpro.ws/api-openweathermap-w3c-geolocation-api-reactjs).
+[Demo](https://cmirnow.github.io/OpenWeatherMap-React-App). [Description (in Russian)](https://masterpro.ws/api-openweathermap-w3c-geolocation-api-reactjs).
 
 ## Quickly start
 
