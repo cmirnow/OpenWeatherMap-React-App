@@ -3,6 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "react-bootstrap/Table";
 import FogComponent from "./components/FogComponent";
+import Footer from "./Footer";
 import moment from "moment";
 import ScrollToTop from "react-scroll-to-top";
 import urid from "urid";
@@ -49,19 +50,6 @@ function App() {
   return (
     <FogComponent>
       <div className="App">
-        <ScrollToTop smooth color="#6666cc" />
-        <span className="fixed-bottom badge bg-secondary link-action">
-        Copyright &copy; 2022{" "}
-          <a
-            alt="Masterpro Project"
-            title="Masterpro Project"
-            href="https://masterpro.ws/api-openweathermap-w3c-geolocation-api-reactjs"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Masterpro Project
-          </a>
-        </span>
         <button
           onClick={getLocation}
           type="button"
@@ -211,6 +199,8 @@ function App() {
               </Table>
             );
           })}
+         <Footer />
+        <ScrollToTop smooth color="#6666cc" />
       </div>
     </FogComponent>
   );
