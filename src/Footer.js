@@ -1,5 +1,6 @@
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const startYear = 2022;
+  const currentYear = new Date().getFullYear();
   return (
     <span className="fixed-bottom badge bg-secondary link-action">
       Copyright &copy;
@@ -10,7 +11,8 @@ const Footer = () => {
         target="_blank"
         rel="noreferrer"
       >
-        {`Masterpro.ws 2021 - ${year}`}
+        Masterpro.ws{" "}
+        {startYear === currentYear ? startYear : startYear + "-" + currentYear}
       </a>
     </span>
   );
