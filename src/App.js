@@ -166,7 +166,7 @@ function App() {
                   <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Day Temperature (&deg;C)</th>
-                    <th scope="col">Night Temperature &deg;C</th>
+                    <th scope="col">Night Temperature (&deg;C)</th>
                     <th scope="col">Pressure (hPa)</th>
                     <th scope="col">Humidity (%)</th>
                     <th scope="col">Wind (meter/sec)</th>
