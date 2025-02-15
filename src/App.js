@@ -23,7 +23,7 @@ function App() {
 
   async function fetchData1(lat, lon) {
     await fetch(
-      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      `//api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=16&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
     )
       .then((res) => res.json())
       .then((data) => setApiDataForecast(data));
