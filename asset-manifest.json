@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/OpenWeatherMap-React-App/static/css/main.1f7a7c40.css",
-    "main.js": "/OpenWeatherMap-React-App/static/js/main.a360831e.js",
+    "main.js": "/OpenWeatherMap-React-App/static/js/main.e8b64c92.js",
     "static/js/256.c818b45f.chunk.js": "/OpenWeatherMap-React-App/static/js/256.c818b45f.chunk.js",
     "static/js/488.ad9a5ce9.chunk.js": "/OpenWeatherMap-React-App/static/js/488.ad9a5ce9.chunk.js",
     "static/js/107.32f72db7.chunk.js": "/OpenWeatherMap-React-App/static/js/107.32f72db7.chunk.js",
     "index.html": "/OpenWeatherMap-React-App/index.html",
     "main.1f7a7c40.css.map": "/OpenWeatherMap-React-App/static/css/main.1f7a7c40.css.map",
-    "main.a360831e.js.map": "/OpenWeatherMap-React-App/static/js/main.a360831e.js.map",
+    "main.e8b64c92.js.map": "/OpenWeatherMap-React-App/static/js/main.e8b64c92.js.map",
     "256.c818b45f.chunk.js.map": "/OpenWeatherMap-React-App/static/js/256.c818b45f.chunk.js.map",
     "488.ad9a5ce9.chunk.js.map": "/OpenWeatherMap-React-App/static/js/488.ad9a5ce9.chunk.js.map",
     "107.32f72db7.chunk.js.map": "/OpenWeatherMap-React-App/static/js/107.32f72db7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f7a7c40.css",
-    "static/js/main.a360831e.js"
+    "static/js/main.e8b64c92.js"
   ]
 }
